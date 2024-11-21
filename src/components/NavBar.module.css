@@ -29,7 +29,8 @@
 }
 
 .logoLink:hover {
-  opacity: 0.9;
+  color: #000000;
+  transition: color 0.3s ease;
 }
 
 .navLinks {
@@ -46,8 +47,9 @@
   color: white;
   text-decoration: none;
   transition: opacity 0.2s;
+  transition: color 0.3s ease;
 }
 
 .navLink:hover {
-  opacity: 0.9;
+  color: #000000
 }

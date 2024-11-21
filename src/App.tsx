@@ -50,7 +50,7 @@ function App() {
       <Routes>
         <Route path="/" element={
           <main style={{ paddingTop: '80px' }}>
-            <h1>Upload an image to detect a face!</h1>
+            <h1 className = "textsss">Upload an image to detect a face!</h1>
             <div className="card">
               <form id="uploadForm">
                 <input type="file" id="fileInput" accept="image/*" onChange={handleChange}/>
