@@ -1,6 +1,9 @@
 import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from "react";
-//import axios from 'axios'
+import NavBar from './components/NavBar';
+import Home from './pages/Home';
+import About from './pages/About';
 
 function App() {
   const [imgSrc, setImgSrc] = useState('');
@@ -56,23 +59,32 @@ function App() {
     }
   };
 
-
   return (
-    <>
-      <h1>Upload an image to detect a face!</h1>
-      <div className="card">
-        <form id="uploadForm">
-          <input type ="file" id="fileInput" accept="image/*" onChange={handleChange}/>
-          <button type="submit">Upload</button>
-        </form>
-        {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '1000px'}} />}
-        <div className="card">{newImgSrc ? (
-        <img src={newImgSrc} alt="Facial Detection Result" style={{maxWidth: '1000px'}} />
-      ) : (
-        <p> Awaiting upload... </p>
-      )}      </div>
-         </div>
-    </>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={
+          <main style={{ paddingTop: '80px' }}>
+            <h1>Upload an image to detect a face!</h1>
+            <div className="card">
+              <form id="uploadForm">
+                <input type="file" id="fileInput" accept="image/*" onChange={handleChange}/>
+                <button type="submit">Upload</button>
+              </form>
+              {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '1000px'}} />}
+              <div className="card">
+                {newImgSrc ? (
+                  <img src={newImgSrc} alt="Facial Detection Result" style={{maxWidth: '1000px'}} />
+                ) : (
+                  <p>Awaiting upload...</p>
+                )}
+              </div>
+            </div>
+          </main>
+        } />
+        <Route path="/about" element={<About />} />
+      </Routes>
+    </Router>
   );
 }
 
