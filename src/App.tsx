@@ -28,21 +28,6 @@ function App() {
     if (files && files[0]) {
       const file = files[0]; // Get the uploaded file
       const reader = new FileReader();
-          // Create a FormData object
-    // const formData = new FormData();
-    // formData.append('file', file); // Append the file to FormData
-
-    // // Send the file to the backend using Axios
-    // try {
-    //   const response = await axios.post('http://localhost:3001/upload', formData, {
-    //     headers: {
-    //       'Content-Type': 'multipart/form-data', // Set the appropriate content type for file upload
-    //     },
-    //   });
-    //   console.log('File uploaded successfully:', response.data);
-    // } catch (error) {
-    //   console.error('Error uploading file:', error);
-    // }
       reader.onload = (event) => {
         if (event.target && typeof event.target.result === 'string') {
           setImgSrc(event.target.result); // Set the image source to display
@@ -65,6 +50,9 @@ function App() {
           <input type ="file" id="fileInput" accept="image/*" onChange={handleChange}/>
           <button type="submit">Upload</button>
         </form>
+        <div className = "box">
+
+        </div>
         {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '1000px'}} />}
         <div className="card">{newImgSrc ? (
         <img src={newImgSrc} alt="Facial Detection Result" style={{maxWidth: '1000px'}} />
