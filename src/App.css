@@ -47,12 +47,19 @@
 }
 
 .textsss {
-  font-size: 50px;
+  margin-top: 5px;
+  /* color: white; */
+
+  color: #e949d1;
+  font-size: 7rem;
+  margin-bottom: 2rem;
+  text-align: center;
   font-family: 'Modak', cursive;
   letter-spacing: 1px;
-  line-height: 1;
-  margin-top: 5px;
-  color: white;
+  text-transform: lowercase;
+  line-height: 1.2;
+  -webkit-text-stroke: 2px white;
+  text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
 .up {
@@ -74,11 +81,11 @@
 .file-input-label {
   background-color: #e949d1;
   color: white;
-  padding: 10px 20px;
+  padding: 200px 200px;
   border-radius: 4px;
   cursor: pointer;
   font-family: 'Futura', cursive;
-  font-size: 20px;
+  font-size: 3rem;
   border: none;
   transition: background-color 0.3s ease;
 }
@@ -89,7 +96,7 @@
 
 .auralyze {
   color: white;
-  font-size: 20px;
+  font-size: 3rem;
   font-family: 'Futura', cursive;
   background-color: #e949d1;
   border: none;
