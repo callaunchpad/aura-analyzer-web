@@ -52,9 +52,12 @@ function App() {
           <main style={{ paddingTop: '80px' }}>
             <h1 className = "textsss">choose image to auralyze</h1>
             <div className="card">
-              <form id="uploadForm" className = "up">
+              <form id="uploadForm" className="up">
+                <label htmlFor="fileInput" className="file-input-label">
+                  choose file
+                </label>
                 <input type="file" id="fileInput" accept="image/*" onChange={handleChange}/>
-                <button type="submit" className = "auralyze">auralyze</button>
+                <button type="submit" className="auralyze">auralyze</button>
               </form>
               {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '1000px'}} />}
               <div className="card">

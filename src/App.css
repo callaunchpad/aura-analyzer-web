@@ -55,6 +55,7 @@
   color: white;
 }
 
+<<<<<<< Updated upstream
 .auralyze {
   color: white;
   font-size: 20px;
@@ -63,8 +64,52 @@
   
 }
 
+=======
+>>>>>>> Stashed changes
 .up {
   color: white;
   font-size: 20px;
   font-family: 'Futura', cursive;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Hide the default file input */
+#fileInput {
+  display: none;
+}
+
+/* Custom file input button */
+.file-input-label {
+  background-color: #e949d1;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Futura', cursive;
+  font-size: 20px;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.file-input-label:hover {
+  background-color: #d641bd;
+}
+
+.auralyze {
+  color: white;
+  font-size: 20px;
+  font-family: 'Futura', cursive;
+  background-color: #e949d1;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.auralyze:hover {
+  background-color: #d641bd;
 }
