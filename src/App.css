@@ -52,4 +52,18 @@
   letter-spacing: 1px;
   line-height: 1;
   margin-top: 5px;
+  color: white;
+}
+
+.auralyze {
+  color: white;
+  font-size: 20px;
+  font-family: 'Futura', cursive;
+  
+}
+
+.up {
+  color: white;
+  font-size: 20px;
+  font-family: 'Futura', cursive;
 }

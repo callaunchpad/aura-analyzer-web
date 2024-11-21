@@ -48,6 +48,7 @@
   text-decoration: none;
   transition: opacity 0.2s;
   transition: color 0.3s ease;
+  font-family: 'Modak', cursive;
 }
 
 .navLink:hover {

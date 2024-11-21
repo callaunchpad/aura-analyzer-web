@@ -50,11 +50,11 @@ function App() {
       <Routes>
         <Route path="/" element={
           <main style={{ paddingTop: '80px' }}>
-            <h1 className = "textsss">Upload an image to detect a face!</h1>
+            <h1 className = "textsss">choose image to auralyze</h1>
             <div className="card">
-              <form id="uploadForm">
+              <form id="uploadForm" className = "up">
                 <input type="file" id="fileInput" accept="image/*" onChange={handleChange}/>
-                <button type="submit">Upload</button>
+                <button type="submit" className = "auralyze">auralyze</button>
               </form>
               {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '1000px'}} />}
               <div className="card">
