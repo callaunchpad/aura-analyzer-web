@@ -2,7 +2,6 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import NavBar from './components/NavBar';
-import Home from './pages/Home';
 import About from './pages/About';
 
 function App() {
@@ -27,6 +26,7 @@ function App() {
   }, [imageUploaded]);
   
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    // navigate('/about')
     const files = e.target.files;
     if (files && files[0]) {
       const file = files[0]; // Get the uploaded file
