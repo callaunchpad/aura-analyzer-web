@@ -18,6 +18,17 @@
   text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
 }
 
+.roundImage {
+  width: 100px;  /* Adjust size as needed */
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 2rem auto;  /* Centers the image */
+  display: block;
+  border: 3px solid #e949d1;  /* Matches your title color */
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);  /* Matches your title shadow */
+}
+
 .content {
   font-size: 1.1rem;
   line-height: 1.6;
