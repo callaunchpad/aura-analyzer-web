@@ -23,7 +23,7 @@
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 2rem auto;  
+  margin: 0;
   display: block;
   border: 3px solid #e949d1;  
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);  
@@ -52,14 +52,17 @@
   display: flex;
   justify-content: center;
   gap: 30px;
+  align-items: flex-start;
 }
 
 .faceName {
   font-size: 1.1rem;
   font-weight: bold;
-  color: #e949d1;
+  color: white;
   margin-top: 8px;
+  margin-bottom: 0;
   font-family: "Futura", cursive;
+  text-transform: lowercase;
 }
 
 .roundImage {
@@ -69,4 +72,6 @@
   object-fit: cover;
   border: 3px solid #e949d1;
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  display: block;
 }
