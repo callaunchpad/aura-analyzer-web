@@ -6,7 +6,7 @@
 }
 
 .title {
-  color: #e949d1;
+  color: #cf7baf;
   padding: 2rem;
   font-size: 4rem;
   margin-bottom: 1rem;
@@ -26,7 +26,7 @@
   object-fit: cover;
   margin: 0;
   display: block;
-  border: 3px solid #e949d1;  
+  border: 3px solid #cf7baf;  
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);  
 }
 
@@ -71,7 +71,7 @@
   height: 100px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #e949d1;
+  border: 3px solid #cf7baf;
   box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
   margin: 0;
   display: block;
