@@ -49,7 +49,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={
-          <main style={{ paddingTop: '80px' }}>
+          <main style={{ paddingTop: '80px', backgroundColor: 'black' }}>
             <h1 className = "textsss">aura analyzer</h1>
             <div className="card">
               <form id="uploadForm" className="up">
