@@ -54,6 +54,14 @@
   gap: 30px;
 }
 
+.faceName {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #e949d1;
+  margin-top: 8px;
+  font-family: "Futura", cursive;
+}
+
 .roundImage {
   width: 100px;
   height: 100px;

@@ -21,6 +21,9 @@ const About = () => {
       <div className={styles.facesGrid}>
         <div className={styles.facesRow}>
           <img src="jade.png" className={styles.roundImage} alt="Jade" />
+          <p className={styles.faceName}>Jade</p>
+        </div>
+        <div>
           <img src="kathryn.png" className={styles.roundImage} alt="Kathryn" />
           <img src="anaisha.png" className={styles.roundImage} alt="Anaisha" />
           <img src="andrea.png" className={styles.roundImage} alt="Andrea" />
