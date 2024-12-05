@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 2rem;
-  background-color: #e949d1;
+  background-color: #cf7baf;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
@@ -31,6 +31,11 @@
 .logoLink:hover {
   color: #000000;
   transition: color 0.3s ease;
+}
+
+.logoImage {
+  width: 120px; /* Adjust the width to make it twice as big */
+  height: auto; /* Maintain aspect ratio */
 }
 
 .navLinks {
