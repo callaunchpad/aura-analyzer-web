@@ -40,15 +40,23 @@ function App() {
       const reader = new FileReader();
       reader.onload = (event) => {
         if (event.target && typeof event.target.result === 'string') {
-          setImgSrc(event.target.result); // Set the image source to display
+          console.log("DOG");
+          // setImgSrc(event.target.result); // Set the image source to display
         }
       };
       reader.readAsDataURL(file); // Read the file as a data URL
 
       setImageUploaded(true); // Set to true to trigger useEffect
-      const response = await apiClient.getCroppedAuraAnalyzeCroppedGet();
+      const response = await apiClient.getRedboxAuraAnalyzeRedboxGet({
+        responseType: 'arraybuffer',  // Set the responseType to 'arraybuffer' to handle binary data
+      });
       console.log("MOOOOOOOO");
+      console.log('Type of response.data:', typeof response.data);
       console.log(response.data);
+      const blob = new Blob([response.data], { type: 'image/jpeg' });
+      const imageUrl = URL.createObjectURL(blob);  
+      setImgSrc(imageUrl);
+      // console.log(response.data);
       // save file into folder
       // now put this file into ../../combined-demo/input-imgs
     }
