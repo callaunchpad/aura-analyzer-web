@@ -47,6 +47,7 @@ function App() {
       reader.readAsDataURL(file); // Read the file as a data URL
 
       setImageUploaded(true); // Set to true to trigger useEffect
+      await apiClient.auraAnalyzeAuraAnalyzePost(file);
       const response = await apiClient.getRedboxAuraAnalyzeRedboxGet({
         responseType: 'arraybuffer',  // Set the responseType to 'arraybuffer' to handle binary data
       });
