@@ -3,6 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import NavBar from './components/NavBar';
 import About from './pages/About';
+import { DefaultApi, Configuration } from './client';
+
+const config = new Configuration({
+  basePath: 'http://localhost:8000', // Set the correct API base URL
+});
+
+const apiClient = new DefaultApi(config);
 
 function App() {
   const [imgSrc, setImgSrc] = useState('');
@@ -39,6 +46,9 @@ function App() {
       reader.readAsDataURL(file); // Read the file as a data URL
 
       setImageUploaded(true); // Set to true to trigger useEffect
+      const response = await apiClient.getCroppedAuraAnalyzeCroppedGet();
+      console.log("MOOOOOOOO");
+      console.log(response.data);
       // save file into folder
       // now put this file into ../../combined-demo/input-imgs
     }
