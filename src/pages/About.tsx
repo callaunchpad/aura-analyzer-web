@@ -18,43 +18,21 @@ const About = () => {
           energy fields present in your photographs.
         </p>
       </div>
-      <div>
-  <img src="jadeface.png" className={styles.roundImage} style={{ position: 'absolute', left: '90px', bottom: '50px' }} />
-</div>
-
-<div>
-  <img src="kathryn.png" className={styles.roundImage} style={{ position: 'absolute', left: '230px', bottom: '50px' }} />
-</div>
-
-<div>
-  <img src="anaisha.png" className={styles.roundImage} style={{ position: 'absolute', left: '370px', bottom: '50px' }} />
-</div>
-
-<div>
-  <img src="andrea.png" className={styles.roundImage} style={{ position: 'absolute', left: '510px', bottom: '50px' }} />
-</div>
-
-<div>
-  <img src="seb.png" className={styles.roundImage} style={{ position: 'absolute', left: '650px', bottom: '50px' }} />
-</div>
-
-<div>
-  <img src="spencer.png" className={styles.roundImage} style={{ position: 'absolute', left: '790px', bottom: '50px' }} />
-</div>
-
-<div>
-  <img src="sophie.png" className={styles.roundImage} style={{ position: 'absolute', left: '930px', bottom: '50px' }} />
-</div>
-
-<div>
-  <img src="mischa.png" className={styles.roundImage} style={{ position: 'absolute', left: '1070px', bottom: '50px' }} />
-</div>
-
-<div>
-  <img src="iris.png" className={styles.roundImage} style={{ position: 'absolute', left: '1210px', bottom: '50px' }} />
-</div>
-
-
+      <div className={styles.facesGrid}>
+        <div className={styles.facesRow}>
+          <img src="jade.png" className={styles.roundImage} alt="Jade" />
+          <img src="kathryn.png" className={styles.roundImage} alt="Kathryn" />
+          <img src="anaisha.png" className={styles.roundImage} alt="Anaisha" />
+          <img src="andrea.png" className={styles.roundImage} alt="Andrea" />
+          <img src="seb.png" className={styles.roundImage} alt="Seb" />
+        </div>
+        <div className={styles.facesRow}>
+          <img src="spencer.png" className={styles.roundImage} alt="Spencer" />
+          <img src="sophie.png" className={styles.roundImage} alt="Sophie" />
+          <img src="mischa.png" className={styles.roundImage} alt="Mischa" />
+          <img src="iris.png" className={styles.roundImage} alt="Iris" />
+        </div>
+      </div>
     </div>
   );
 };
