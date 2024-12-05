@@ -51,7 +51,7 @@
   margin-top: 5px;
   /* color: white; */
 
-  color: #e949d1;
+  color: #cf7baf;
   font-size: 7rem;
   margin-bottom: 2rem;
   text-align: center;
@@ -80,7 +80,7 @@
 
 /* Custom file input button */
 .file-input-label {
-  background-color: #e949d1;
+  background-color: #cf7baf;
   color: white;
   padding: 200px 200px;
   border-radius: 4px;
@@ -92,14 +92,14 @@
 }
 
 .file-input-label:hover {
-  background-color: #d641bd;
+  background-color: #cf7bafd4;
 }
 
 .auralyze {
   color: white;
   font-size: 3rem;
   font-family: 'Futura', cursive;
-  background-color: #e949d1;
+  background-color: #cf7baf;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
