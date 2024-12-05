@@ -59,7 +59,7 @@ function App() {
                 <input type="file" id="fileInput" accept="image/*" onChange={handleChange}/>
                 <button type="submit" className="auralyze">auralyze</button>
               </form>
-              {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '1000px'}} />}
+              {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
               {/* <div className="card">
                 {newImgSrc ? (
                   <img src={newImgSrc} alt="Facial Detection Result" style={{maxWidth: '1000px'}} />
