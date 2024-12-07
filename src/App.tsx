@@ -137,22 +137,21 @@ function App() {
           <main style={{ paddingTop: '80px' }}>
             <h1 className="textsss">Aura Analyzer</h1>
             <div className="card">
-              <div className="toggle-container">
+              <div className="toggle-container cen">
                 <label className="toggle">
-                  <input
+                    <input
                     type="checkbox"
                     checked={female}
                     onChange={handleDepartmentToggle}
                   />
-                  <span className="toggle-slider"></span>
-                  <span className="toggle-label">
+                    <span className="toggle-slider"></span> 
+                      <span className="toggle-label">
                     {female ? 'Womenswear' : 'Menswear' }
-                  </span>
+                      </span> 
                 </label>
               </div>
-
               <form id="uploadForm" className="up">
-                <label htmlFor="fileInput" className="file-input-label">
+                <label htmlFor="fileInput" className="file-input-label cen">
                   {/* style={{height:"150px", width: "200px", padding: '3.2em'} */}
                   choose image to analyze
                 </label>

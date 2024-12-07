@@ -115,10 +115,13 @@
 /* App.css */
 .toggle-container {
   display: flex;
-  justify-content: center; /* Align to the center */
+  flex-direction: column;
+  justify-content: center; 
+  /* Align to the center */
   margin-bottom: 20px;
   margin-top: 20px; /* Adjust top margin if needed */
   position: relative; /* Ensure proper positioning */
+  padding-bottom: 100px;
 }
 
 .toggle {
@@ -127,6 +130,11 @@
   width: 60px;
   height: 34px;
   margin-top: -10px; /* Move toggle button up by 10px */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .toggle input {
@@ -140,10 +148,12 @@
   font-weight: bold;
   color: #7ab1ed;  /* Default color: blue */
   transition: color 0.3s ease; /* Smooth color transition */
-  display: inline-block;
+  display: center;
   vertical-align: middle; /* Keeps the text aligned in the middle */
   position: relative; /* To move it down */
   top: 5px; /* Move the label text down by a few pixels */
+  text-align: center; /* Center the text */
+  padding-top: 60px;
 }
 
 .toggle-slider {
@@ -183,4 +193,18 @@ input:checked + .toggle-slider:before {
 /* Change the text color based on checked state */
 input:checked ~ .toggle-label {
   color: #cf7baf; /* Change the label color to pink when checked */
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }

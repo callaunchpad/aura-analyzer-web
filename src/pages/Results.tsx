@@ -17,7 +17,7 @@ const Results: React.FC<ResultsProps> = ({ imgSrc, cor, rd, crop, pal, szn, ur, 
     <div className={styles.aboutContainer}>
       <h1 className={styles.title}>aura analyzer</h1>
       <div className={styles.content}>
-        <div className = "imm">
+        <div className = "imm content">
           {rtg ? (
             <div>
           
@@ -26,7 +26,7 @@ const Results: React.FC<ResultsProps> = ({ imgSrc, cor, rd, crop, pal, szn, ur, 
             <img src={rd} alt="Redbox Preview" style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />
             <img src={crop} alt="Cropped Preview" style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />
             <img src={pal} alt="Palette" style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />
-            <h1> your season is {szn}! </h1>
+            <p> your season is {szn}! </p>
             <div className='notwhite'>
                 {ur.map((item: string | undefined, i: Key | null | undefined) => (
                 <div key={i}>
