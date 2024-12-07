@@ -78,12 +78,12 @@ function App() {
 
       // Get palette
       const auraRequest: AuraRequest = {
-        Department: AuraRequestDepartmentEnum.Menswear,
+        Department: AuraRequestDepartmentEnum.Womenswear,
         ColorSeason: season,
         n: 1, // Optional
       };
       const generateOutfitResponse = await apiClient.generateOutfitGenerateOutfitPost(auraRequest);
-      console.log(generateOutfitResponse)
+      console.log(generateOutfitResponse.data)
 
 
     }
