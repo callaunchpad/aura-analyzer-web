@@ -6,7 +6,7 @@ import About from './pages/About';
 import { DefaultApi, Configuration, AuraRequest, AuraRequestDepartmentEnum, AuraRequestColorSeasonEnum } from './client';
 
 const config = new Configuration({
-  basePath: 'http://localhost:8000', // Set the correct API base URL
+  basePath: 'https://web-aura-analyzer-g7cpc5cgb4gchka9.canadacentral-01.azurewebsites.net/', // Set the correct API base URL
 });
 
 const apiClient = new DefaultApi(config);
