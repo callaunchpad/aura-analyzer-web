@@ -1,11 +1,10 @@
 import './App.css'
-import { BrowserRouter as Router, Routes, Route, useLinkClickHandler } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import NavBar from './components/NavBar';
 import About from './pages/About';
 import Results from './pages/Results';
-import Home from './pages/Home';
 import { DefaultApi, Configuration, AuraRequest, AuraRequestDepartmentEnum, AuraRequestColorSeasonEnum } from './client';
 
 const config = new Configuration({
@@ -25,16 +24,20 @@ function App() {
   // const [colors, setColors] = useState([]);
   // const [cszn, setCszn] = useState([]);
   // const [dept, setDept] = useState([]);
-  const [url, setUrl] = useState([]);
+  // const [url, setUrl] = useState([]);
   // const [master, setMaster] = useState([]);
   // const [product, setProduct] = useState([]);
   // const [size, setSize] = useState([]);
   // const [sub, setSub] = useState([]);
   const [female, setFemale] = useState(true);
   const [imgTaken, setImgTaken] = useState(false);
+  const [menImgs, setMenImgs] = useState([]);
+  const [womenImgs, setWomenImgs] = useState([]);
+  const [resultImgs, setResultImgs] = useState([]); // depending on men or women button, displays the outfit
   
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
+    // takes an image
     if (files && files[0]) {
       const file = files[0];
       const reader = new FileReader();
@@ -78,13 +81,24 @@ function App() {
       const paletteImageUrl = URL.createObjectURL(paletteBlob);  
       setPaletteImgSrc(paletteImageUrl);
 
-        const auraRequest: AuraRequest = {
-          Department:female ? (AuraRequestDepartmentEnum.Womenswear) : (AuraRequestDepartmentEnum.Menswear),
-        ColorSeason: season,
-        n: 1, // Optional
+      //   const auraRequest: AuraRequest = {
+      //     Department:female ? (AuraRequestDepartmentEnum.Womenswear) : (AuraRequestDepartmentEnum.Menswear),
+      //   ColorSeason: season,
+      //   n: 1, // Optional
+      // };
+
+      const femaleAR: AuraRequest = {
+        Department: AuraRequestDepartmentEnum.Womenswear, ColorSeason: season, n:1,
+      };
+      const maleAR: AuraRequest = {
+        Department: AuraRequestDepartmentEnum.Menswear, ColorSeason: season, n:1,
       };
 
-      const generateOutfitResponse = await apiClient.generateOutfitGenerateOutfitPost(auraRequest);
+      // pregenerates outfit for men/women so no recomputing
+
+      const mOutfitResponse = await apiClient.generateOutfitGenerateOutfitPost(maleAR);
+      const wOutfitResponse = await apiClient.generateOutfitGenerateOutfitPost(femaleAR);
+      // const generateOutfitResponse = await apiClient.generateOutfitGenerateOutfitPost(auraRequest);
       // generateOutfitResponse.data)
       // const extractColor = generateOutfitResponse.data.map((row: { Color: any; }[]) => row[0]?.Color || null);
       // setColors(extractColor);
@@ -92,8 +106,23 @@ function App() {
       // setCszn(extractColorSeason);
       // const extractDepartment = generateOutfitResponse.data.map((row: { Department: any; }[]) => row[0]?.Department || null);
       // setDept(extractDepartment);
-      const extractItemUrl = generateOutfitResponse.data.map((row: { ItemUrl: any; }[]) => row[0]?.ItemUrl || null);
-      setUrl(extractItemUrl);
+      // const extractItemUrl = generateOutfitResponse.data.map((row: { ItemUrl: any; }[]) => row[0]?.ItemUrl || null);
+      // setUrl(extractItemUrl);
+      const extractMenItemUrl = mOutfitResponse.data.map((row: { ItemUrl: any; }[]) => row[0]?.ItemUrl || null);
+      setMenImgs(extractMenItemUrl);
+      const extractWomenItemUrl = wOutfitResponse.data.map((row: { ItemUrl: any; }[]) => row[0]?.ItemUrl || null);
+      setWomenImgs(extractWomenItemUrl);
+      if (female) {
+        setResultImgs(extractWomenItemUrl);
+        console.log(wOutfitResponse.data);
+        setSeasonSrc(femaleAR.ColorSeason);
+        wOutfitResponse.data ? setReadyToGo(true) : setReadyToGo(false);
+      } else {
+        setResultImgs(extractMenItemUrl);
+        console.log(mOutfitResponse.data);
+        setSeasonSrc(maleAR.ColorSeason);
+        mOutfitResponse.data ? setReadyToGo(true) : setReadyToGo(false);
+      }
       // const extractMasterCategory = generateOutfitResponse.data.map((row: { MasterCategory: any; }[]) => row[0]?.MasterCategory || null);
       // setMaster(extractMasterCategory);
       // const extractProductDisplayName = generateOutfitResponse.data.map((row: { ProductDisplayName: any; }[]) => row[0]?.ProductDisplayName || null);
@@ -113,9 +142,6 @@ function App() {
         ProductDisplayName
         Size
         SubCategory*/
-      console.log(generateOutfitResponse.data);
-      setSeasonSrc(auraRequest.ColorSeason);
-      generateOutfitResponse.data ? setReadyToGo(true) : setReadyToGo(false);
       console.log("BOTTOM OF HANDLE CHANGE. Ready to go: ", readyToGo);
     }
   };
@@ -132,9 +158,12 @@ function App() {
     if (isChecked) {
       console.log('Womenswear');
       setFemale(true);
+      setResultImgs(womenImgs) ;
+
     } else {
       console.log('Menswear');
       setFemale(false);
+      setResultImgs(menImgs);
     }
   };
 
@@ -217,7 +246,7 @@ function App() {
         crop={croppedImgSrc} 
         pal={paletteImgSrc} 
         szn={seasonSrc} 
-        ur={url} 
+        ur={resultImgs} // instead of url
         rtg={readyToGo}/>}/>
       </Routes>
     </Router>
