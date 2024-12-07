@@ -33,7 +33,7 @@
 .content {
   font-size: 1.1rem;
   line-height: 1.6;
-  color: white;
+  color: #cf7baf;
   font-family: "Futura", cursive;
   margin-bottom: 50px;  
 }
@@ -59,7 +59,7 @@
 .faceName {
   font-size: 1.1rem;
   font-weight: bold;
-  color: white;
+  color: #cf7baf;
   margin-top: 8px;
   margin-bottom: 0;
   font-family: "Futura", cursive;

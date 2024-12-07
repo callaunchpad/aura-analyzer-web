@@ -7,15 +7,16 @@ const About = () => {
       <div className={styles.content}>
         
         <p>
-          aura analyzer is an innovative tool that helps you understand the emotional
-          and energetic qualities captured in your photos. using advanced facial
-          detection and analysis, we reveal the subtle energies and auras present
-          in your images.
+          aura analyzer is a revolutionary color analysis model designed to classify users
+          into distinct seasonal color categories based on their unique tone and color profile. 
+          using advanced algorithms and a deep understanding of color theory, aura analyzer takes 
+          a user inputted image and classifies the user into one of four seasonal categories—winter, spring, 
+          summer, or autumn—each with its own color palette that compliments the natural color profile of the user.
         </p>
         <p>
-          our technology combines modern computer vision with traditional aura
-          interpretation techniques to provide you with unique insights about the
-          energy fields present in your photographs.
+        whether you're looking to enhance your wardrobe, improve your makeup choices, or simply understand
+         your innate color energy, aura analyzer offers a personalized, insightful approach to color that goes
+          beyond just appearance. embrace your season and tone, and let the colors that align with your aura empower you.
         </p>
       </div>
       <div className={styles.facesGrid}>
