@@ -208,12 +208,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Get Cropped
+         * @summary Get Corrected
+         * @param {string} filename 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCroppedAuraAnalyzeCroppedGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/aura_analyze/cropped`;
+        getCorrectedAuraAnalyzeWhiteBalancedGet: async (filename: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'filename' is not null or undefined
+            assertParamExists('getCorrectedAuraAnalyzeWhiteBalancedGet', 'filename', filename)
+            const localVarPath = `/aura_analyze/white-balanced`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -224,6 +227,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (filename !== undefined) {
+                localVarQueryParameter['filename'] = filename;
+            }
 
 
     
@@ -238,12 +245,15 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
-         * @summary Get Corrected
+         * @summary Get Cropped
+         * @param {string} filename 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCorrectedAuraAnalyzeCorrectedGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/aura_analyze/white-balanced`;
+        getCroppedAuraAnalyzeCroppedGet: async (filename: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'filename' is not null or undefined
+            assertParamExists('getCroppedAuraAnalyzeCroppedGet', 'filename', filename)
+            const localVarPath = `/aura_analyze/cropped`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -254,6 +264,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (filename !== undefined) {
+                localVarQueryParameter['filename'] = filename;
+            }
 
 
     
@@ -303,10 +317,13 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Get Palette
+         * @param {string} filename 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPaletteAuraAnalyzePaletteGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getPaletteAuraAnalyzePaletteGet: async (filename: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'filename' is not null or undefined
+            assertParamExists('getPaletteAuraAnalyzePaletteGet', 'filename', filename)
             const localVarPath = `/aura_analyze/palette`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -318,6 +335,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (filename !== undefined) {
+                localVarQueryParameter['filename'] = filename;
+            }
 
 
     
@@ -333,10 +354,13 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         /**
          * 
          * @summary Get Redbox
+         * @param {string} filename 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRedboxAuraAnalyzeRedboxGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        getRedboxAuraAnalyzeRedboxGet: async (filename: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'filename' is not null or undefined
+            assertParamExists('getRedboxAuraAnalyzeRedboxGet', 'filename', filename)
             const localVarPath = `/aura_analyze/redbox`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -348,6 +372,10 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
             const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
+
+            if (filename !== undefined) {
+                localVarQueryParameter['filename'] = filename;
+            }
 
 
     
@@ -458,26 +486,28 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
-         * @summary Get Cropped
+         * @summary Get Corrected
+         * @param {string} filename 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCroppedAuraAnalyzeCroppedGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getCroppedAuraAnalyzeCroppedGet(options);
+        async getCorrectedAuraAnalyzeWhiteBalancedGet(filename: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCorrectedAuraAnalyzeWhiteBalancedGet(filename, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getCroppedAuraAnalyzeCroppedGet']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getCorrectedAuraAnalyzeWhiteBalancedGet']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
          * 
-         * @summary Get Corrected
+         * @summary Get Cropped
+         * @param {string} filename 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getCorrectedAuraAnalyzeCorrectedGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getCorrectedAuraAnalyzeCorrectedGet(options);
+        async getCroppedAuraAnalyzeCroppedGet(filename: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCroppedAuraAnalyzeCroppedGet(filename, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getCorrectedAuraAnalyzeCorrectedGet']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getCroppedAuraAnalyzeCroppedGet']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
@@ -496,11 +526,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get Palette
+         * @param {string} filename 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getPaletteAuraAnalyzePaletteGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getPaletteAuraAnalyzePaletteGet(options);
+        async getPaletteAuraAnalyzePaletteGet(filename: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getPaletteAuraAnalyzePaletteGet(filename, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getPaletteAuraAnalyzePaletteGet']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -508,11 +539,12 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         /**
          * 
          * @summary Get Redbox
+         * @param {string} filename 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async getRedboxAuraAnalyzeRedboxGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.getRedboxAuraAnalyzeRedboxGet(options);
+        async getRedboxAuraAnalyzeRedboxGet(filename: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getRedboxAuraAnalyzeRedboxGet(filename, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['DefaultApi.getRedboxAuraAnalyzeRedboxGet']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -573,21 +605,23 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
-         * @summary Get Cropped
+         * @summary Get Corrected
+         * @param {string} filename 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCroppedAuraAnalyzeCroppedGet(options?: RawAxiosRequestConfig): AxiosPromise<any> {
-            return localVarFp.getCroppedAuraAnalyzeCroppedGet(options).then((request) => request(axios, basePath));
+        getCorrectedAuraAnalyzeWhiteBalancedGet(filename: string, options?: RawAxiosRequestConfig): AxiosPromise<any> {
+            return localVarFp.getCorrectedAuraAnalyzeWhiteBalancedGet(filename, options).then((request) => request(axios, basePath));
         },
         /**
          * 
-         * @summary Get Corrected
+         * @summary Get Cropped
+         * @param {string} filename 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getCorrectedAuraAnalyzeCorrectedGet(options?: RawAxiosRequestConfig): AxiosPromise<any> {
-            return localVarFp.getCorrectedAuraAnalyzeCorrectedGet(options).then((request) => request(axios, basePath));
+        getCroppedAuraAnalyzeCroppedGet(filename: string, options?: RawAxiosRequestConfig): AxiosPromise<any> {
+            return localVarFp.getCroppedAuraAnalyzeCroppedGet(filename, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -602,20 +636,22 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         /**
          * 
          * @summary Get Palette
+         * @param {string} filename 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getPaletteAuraAnalyzePaletteGet(options?: RawAxiosRequestConfig): AxiosPromise<any> {
-            return localVarFp.getPaletteAuraAnalyzePaletteGet(options).then((request) => request(axios, basePath));
+        getPaletteAuraAnalyzePaletteGet(filename: string, options?: RawAxiosRequestConfig): AxiosPromise<any> {
+            return localVarFp.getPaletteAuraAnalyzePaletteGet(filename, options).then((request) => request(axios, basePath));
         },
         /**
          * 
          * @summary Get Redbox
+         * @param {string} filename 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        getRedboxAuraAnalyzeRedboxGet(options?: RawAxiosRequestConfig): AxiosPromise<any> {
-            return localVarFp.getRedboxAuraAnalyzeRedboxGet(options).then((request) => request(axios, basePath));
+        getRedboxAuraAnalyzeRedboxGet(filename: string, options?: RawAxiosRequestConfig): AxiosPromise<any> {
+            return localVarFp.getRedboxAuraAnalyzeRedboxGet(filename, options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -671,24 +707,26 @@ export class DefaultApi extends BaseAPI {
 
     /**
      * 
-     * @summary Get Cropped
+     * @summary Get Corrected
+     * @param {string} filename 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getCroppedAuraAnalyzeCroppedGet(options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getCroppedAuraAnalyzeCroppedGet(options).then((request) => request(this.axios, this.basePath));
+    public getCorrectedAuraAnalyzeWhiteBalancedGet(filename: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getCorrectedAuraAnalyzeWhiteBalancedGet(filename, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
-     * @summary Get Corrected
+     * @summary Get Cropped
+     * @param {string} filename 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getCorrectedAuraAnalyzeCorrectedGet(options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getCorrectedAuraAnalyzeCorrectedGet(options).then((request) => request(this.axios, this.basePath));
+    public getCroppedAuraAnalyzeCroppedGet(filename: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getCroppedAuraAnalyzeCroppedGet(filename, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -706,23 +744,25 @@ export class DefaultApi extends BaseAPI {
     /**
      * 
      * @summary Get Palette
+     * @param {string} filename 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getPaletteAuraAnalyzePaletteGet(options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getPaletteAuraAnalyzePaletteGet(options).then((request) => request(this.axios, this.basePath));
+    public getPaletteAuraAnalyzePaletteGet(filename: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getPaletteAuraAnalyzePaletteGet(filename, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
      * 
      * @summary Get Redbox
+     * @param {string} filename 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof DefaultApi
      */
-    public getRedboxAuraAnalyzeRedboxGet(options?: RawAxiosRequestConfig) {
-        return DefaultApiFp(this.configuration).getRedboxAuraAnalyzeRedboxGet(options).then((request) => request(this.axios, this.basePath));
+    public getRedboxAuraAnalyzeRedboxGet(filename: string, options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getRedboxAuraAnalyzeRedboxGet(filename, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

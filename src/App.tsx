@@ -56,32 +56,33 @@ function App() {
         }
       };
       reader.readAsDataURL(file);
+      const fileNameWithoutExtension = file.name.substring(0, file.name.indexOf('.'));
 
       const auraResponse = await apiClient.auraAnalyzeAuraAnalyzePost(file);
-      const season: AuraRequestColorSeasonEnum = auraResponse.data;
+      const season: AuraRequestColorSeasonEnum = auraResponse.data[0];;
 
-      const redboxImage = await apiClient.getRedboxAuraAnalyzeRedboxGet({
+      const redboxImage = await apiClient.getRedboxAuraAnalyzeRedboxGet(fileNameWithoutExtension, {
         responseType: 'arraybuffer',
       });
       const redboxImageBlob = new Blob([redboxImage.data], { type: 'image/jpeg' });
       const redboxImageUrl = URL.createObjectURL(redboxImageBlob);  
       setRedboxImgSrc(redboxImageUrl);
 
-      const correctedImage = await apiClient.getCorrectedAuraAnalyzeCorrectedGet({
+      const correctedImage = await apiClient.getCorrectedAuraAnalyzeWhiteBalancedGet(fileNameWithoutExtension, {
         responseType: 'arraybuffer',
       });
       const correctedImageBlob = new Blob([correctedImage.data], { type: 'image/jpeg' });
       const correctedImageUrl = URL.createObjectURL(correctedImageBlob);  
       setCorrectedImgSrc(correctedImageUrl);
 
-      const croppedImage = await apiClient.getCroppedAuraAnalyzeCroppedGet({
+      const croppedImage = await apiClient.getCroppedAuraAnalyzeCroppedGet(fileNameWithoutExtension, {
         responseType: 'arraybuffer',
       });
       const croppedImageBlob = new Blob([croppedImage.data], { type: 'image/jpeg' });
       const croppedImageUrl = URL.createObjectURL(croppedImageBlob);  
       setCroppedImgSrc(croppedImageUrl);
 
-      const palette = await apiClient.getPaletteAuraAnalyzePaletteGet({
+      const palette = await apiClient.getPaletteAuraAnalyzePaletteGet(fileNameWithoutExtension, {
         responseType: 'arraybuffer',
       });
       const paletteBlob = new Blob([palette.data], { type: 'image/jpeg' });
