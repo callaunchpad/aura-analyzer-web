@@ -19,14 +19,14 @@ function App() {
   const [croppedImgSrc, setCroppedImgSrc] = useState('');
   const [paletteImgSrc, setPaletteImgSrc] = useState('');
   const [seasonSrc, setSeasonSrc] = useState('');
-  const [colors, setColors] = useState([]);
-  const [cszn, setCszn] = useState([]);
-  const [dept, setDept] = useState([]);
+  // const [colors, setColors] = useState([]);
+  // const [cszn, setCszn] = useState([]);
+  // const [dept, setDept] = useState([]);
   const [url, setUrl] = useState([]);
-  const [master, setMaster] = useState([]);
-  const [product, setProduct] = useState([]);
-  const [size, setSize] = useState([]);
-  const [sub, setSub] = useState([]);
+  // const [master, setMaster] = useState([]);
+  // const [product, setProduct] = useState([]);
+  // const [size, setSize] = useState([]);
+  // const [sub, setSub] = useState([]);
   
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     // navigate('/about')
@@ -88,22 +88,22 @@ function App() {
       };
       const generateOutfitResponse = await apiClient.generateOutfitGenerateOutfitPost(auraRequest);
       console.log(generateOutfitResponse.data)
-      const extractColor = generateOutfitResponse.data.map((row: { Color: any; }[]) => row[0]?.Color || null);
-      setColors(extractColor);
-      const extractColorSeason = generateOutfitResponse.data.map((row: { ColorSeason: any; }[]) => row[0]?.ColorSeason || null);
-      setCszn(extractColorSeason);
-      const extractDepartment = generateOutfitResponse.data.map((row: { Department: any; }[]) => row[0]?.Department || null);
-      setDept(extractDepartment);
+      // const extractColor = generateOutfitResponse.data.map((row: { Color: any; }[]) => row[0]?.Color || null);
+      // setColors(extractColor);
+      // const extractColorSeason = generateOutfitResponse.data.map((row: { ColorSeason: any; }[]) => row[0]?.ColorSeason || null);
+      // setCszn(extractColorSeason);
+      // const extractDepartment = generateOutfitResponse.data.map((row: { Department: any; }[]) => row[0]?.Department || null);
+      // setDept(extractDepartment);
       const extractItemUrl = generateOutfitResponse.data.map((row: { ItemUrl: any; }[]) => row[0]?.ItemUrl || null);
       setUrl(extractItemUrl);
-      const extractMasterCategory = generateOutfitResponse.data.map((row: { MasterCategory: any; }[]) => row[0]?.MasterCategory || null);
-      setMaster(extractMasterCategory);
-      const extractProductDisplayName = generateOutfitResponse.data.map((row: { ProductDisplayName: any; }[]) => row[0]?.ProductDisplayName || null);
-      setProduct(extractProductDisplayName);
-      const extractSize = generateOutfitResponse.data.map((row: { Size: any; }[]) => row[0]?.Size || null);
-      setSize(extractSize);
-      const extractSubCategory = generateOutfitResponse.data.map((row: { SubCategory: any; }[]) => row[0]?.SubCategory || null);
-      setSub(extractSubCategory);
+      // const extractMasterCategory = generateOutfitResponse.data.map((row: { MasterCategory: any; }[]) => row[0]?.MasterCategory || null);
+      // setMaster(extractMasterCategory);
+      // const extractProductDisplayName = generateOutfitResponse.data.map((row: { ProductDisplayName: any; }[]) => row[0]?.ProductDisplayName || null);
+      // setProduct(extractProductDisplayName);
+      // const extractSize = generateOutfitResponse.data.map((row: { Size: any; }[]) => row[0]?.Size || null);
+      // setSize(extractSize);
+      // const extractSubCategory = generateOutfitResponse.data.map((row: { SubCategory: any; }[]) => row[0]?.SubCategory || null);
+      // setSub(extractSubCategory);
 
       // console.log(generateOutfitResponse.data[0][0].Color)
       // console.log(generateOutfitResponse.data[1][0].Color)
@@ -149,9 +149,9 @@ function App() {
                   )}
                 </div>
                 <div className ='notwhite'>
-                {colors.map((item, i) => (
+                {url.map((item, i) => (
                   <div key={i}>
-                  <img src={url[i]} alt={`Image ${i}`} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />
+                  <img src={item} alt={`Image ${i}`} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />
                   </div>
                 ))}
                 {/* {colors.map((item, i) => (
@@ -173,7 +173,14 @@ function App() {
           </main>
         } />
         <Route path="/about" element={<About />} />
-        <Route path="/results" element={<Results imgSrc={imgSrc} setImgSrc={setImgSrc}/>}/>
+        <Route path="/results" element={<Results 
+        imgSrc={imgSrc} 
+        cor={correctedImgSrc} 
+        rd={redboxImgSrc} 
+        crop={croppedImgSrc} 
+        pal={paletteImgSrc} 
+        szn={seasonSrc} 
+        ur={url} />}/>
       </Routes>
     </Router>
   );
