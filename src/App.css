@@ -112,3 +112,75 @@
 .notwhite {
   color:black;
 }
+/* App.css */
+.toggle-container {
+  display: flex;
+  justify-content: flex-start; /* Align to the left */
+  margin-bottom: 20px;
+  margin-top: 20px; /* Adjust top margin if needed */
+  position: relative; /* Ensure proper positioning */
+}
+
+.toggle {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  margin-top: -10px; /* Move toggle button up by 10px */
+}
+
+.toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-label {
+  font-size: 16px;
+  font-weight: bold;
+  color: #7ab1ed;  /* Default color: blue */
+  transition: color 0.3s ease; /* Smooth color transition */
+  display: inline-block;
+  vertical-align: middle; /* Keeps the text aligned in the middle */
+  position: relative; /* To move it down */
+  top: 5px; /* Move the label text down by a few pixels */
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #7ab1ed; /* Light blue for unchecked state */
+  transition: background-color 0.4s;
+  border-radius: 34px;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+  left: 4px;
+  bottom: 4px;
+  background-color: white; /* Keep the handle white */
+  transition: 0.4s;
+}
+
+/* When the input is checked, change the slider color */
+input:checked + .toggle-slider {
+  background-color: #cf7baf; /* Pink for checked state */
+}
+
+/* When the input is checked, move the circle (handle) to the right */
+input:checked + .toggle-slider:before {
+  transform: translateX(26px); /* Move the handle to the right */
+}
+
+/* Change the text color based on checked state */
+input:checked ~ .toggle-label {
+  color: #cf7baf; /* Change the label color to pink when checked */
+}

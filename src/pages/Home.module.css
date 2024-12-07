@@ -54,3 +54,60 @@
   display: block;
   margin: 1rem auto;
 }
+.toggleContainer {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.toggleSwitch {
+  position: relative;
+  display: inline-block;
+  width: 200px;
+  height: 40px;
+  background-color: #f4f4f4;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.toggleLabels {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  z-index: 1;
+}
+
+.label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  transition: 0.3s;
+}
+
+.label.active {
+  color: white;
+}
+
+.slider {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: #000;
+  border-radius: 20px;
+  transition: 0.3s;
+  top: 0;
+  left: 0;
+}
+
+.womenActive .slider {
+  transform: translateX(0);
+}
+
+.menActive .slider {
+  transform: translateX(100%);
+}
+
