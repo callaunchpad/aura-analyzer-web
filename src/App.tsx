@@ -1,5 +1,6 @@
 import './App.css'
 import { BrowserRouter as Router, Routes, Route, useLinkClickHandler } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import NavBar from './components/NavBar';
 import About from './pages/About';
@@ -169,7 +170,14 @@ function App() {
                 {imgTaken ? (<div>
                   {readyToGo ? (
                       <div className='cen'>
-                        <button type="submit" className="auralyze">auralyze</button>
+                          <Link to="/results"> 
+                          <button type="submit" className="auralyze">
+                            <label htmlFor="button" className="link-label"> 
+                              auralyze
+                              </label>
+                            </button>
+                        </Link>
+                        
                         <button type="submit" className="auralyze" onClick={resetButton}>reset</button>
                           {/* {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
                         {correctedImgSrc && <img id="corrected" alt="Corrected Preview" src={correctedImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}}/>}

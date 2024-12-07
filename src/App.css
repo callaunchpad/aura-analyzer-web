@@ -84,7 +84,8 @@
   border-radius: 15px;
   cursor: pointer;
   font-family: 'Futura', cursive;
-  font-size: 3rem;
+  font-weight: bold;
+  font-size: 2.6rem;
   border: none;
   transition: background-color 0.3s ease;
 }
@@ -215,4 +216,18 @@ input:checked ~ .toggle-label {
   font-family: "Futura", cursive;
   margin-bottom: 70px;  
   font-size: 2.5rem;
+}
+
+#Link {
+  display: none;
+}
+
+.link-label {
+  color: white;
+  cursor: pointer;
+  font-family: 'Futura', cursive;
+  font-weight: bold;
+  font-size: 2.6rem;
+  border: none;
+  transition: background-color 0.3s ease;
 }
