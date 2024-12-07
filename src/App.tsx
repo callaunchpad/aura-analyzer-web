@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLinkClickHandler } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import NavBar from './components/NavBar';
 import About from './pages/About';
@@ -30,6 +30,7 @@ function App() {
   // const [size, setSize] = useState([]);
   // const [sub, setSub] = useState([]);
   const [female, setFemale] = useState(true);
+  const [imgTaken, setImgTaken] = useState(false);
   
   const handleChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -39,6 +40,7 @@ function App() {
       reader.onload = (event) => {
         if (event.target && typeof event.target.result === 'string') {
           setImgSrc(event.target.result);
+          setImgTaken(true);
           console.log("Setting image and handling change...")
         }
       };
@@ -117,6 +119,12 @@ function App() {
     }
   };
 
+  const resetButton = () => {
+    setReadyToGo(false);
+    setImgTaken(false);
+    console.log("reset");
+  }
+
   const handleDepartmentToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log("Handling department toggle...");
     const isChecked = e.target.checked;
@@ -158,9 +166,11 @@ function App() {
                 <input type="file" id="fileInput" accept="image/*" onChange={handleChange} />
               </form>
               <div>
-                   {readyToGo ? (
-                      <div>
-                        <button type="submit" className="auralyze">Analyze</button>
+                {imgTaken ? (<div>
+                  {readyToGo ? (
+                      <div className='cen'>
+                        <button type="submit" className="auralyze">auralyze</button>
+                        <button type="submit" className="auralyze" onClick={resetButton}>reset</button>
                           {/* {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
                         {correctedImgSrc && <img id="corrected" alt="Corrected Preview" src={correctedImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}}/>}
                         {redboxImgSrc && <img id="redbox" alt="Redbox Preview" src={redboxImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
@@ -182,9 +192,11 @@ function App() {
                           }
                           </div> */}
                       </div>
-                    ) : (<div className='notwhite'> <p>waiting...</p> </div>)
+                    ) : (<div className='notwhite iliketext'> <p>waiting...</p> </div>)
                     // this is where you put the loading
                     }
+
+                </div>) : (null)}
               </div>
             </div>
           </main>

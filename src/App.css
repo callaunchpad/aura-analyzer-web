@@ -208,3 +208,11 @@ input:checked ~ .toggle-label {
   justify-content: center;
   align-items: center;
 }
+
+.iliketext {
+  line-height: 1.6;
+  color: #cf7baf;
+  font-family: "Futura", cursive;
+  margin-bottom: 70px;  
+  font-size: 2.5rem;
+}
