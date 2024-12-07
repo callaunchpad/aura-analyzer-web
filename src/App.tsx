@@ -15,6 +15,7 @@ function App() {
   const [imgSrc, setImgSrc] = useState('');
   const [newImgSrc, setNewImgSrc] = useState('');
   const [redboxImgSrc, setRedboxImgSrc] = useState('');
+  const [correctedImgSrc, setCorrectedImgSrc] = useState('');
   const [croppedImgSrc, setCroppedImgSrc] = useState('');
   const [paletteImgSrc, setPaletteImgSrc] = useState('');
   const [seasonSrc, setSeasonSrc] = useState('');
@@ -65,6 +66,14 @@ function App() {
       const redboxImageUrl = URL.createObjectURL(redboxImageBlob);  
       setRedboxImgSrc(redboxImageUrl);
 
+      // Get corrected image
+      const correctedImage = await apiClient.getCorrectedAuraAnalyzeCorrectedGet({
+        responseType: 'arraybuffer',  // Set the responseType to 'arraybuffer' to handle binary data
+      });
+      const correctedImageBlob = new Blob([correctedImage.data], { type: 'image/jpeg' });
+      const correctedImageUrl = URL.createObjectURL(correctedImageBlob);  
+      setCorrectedImgSrc(correctedImageUrl);
+
       // Get cropped image
       const croppedImage = await apiClient.getCroppedAuraAnalyzeCroppedGet({
         responseType: 'arraybuffer',  // Set the responseType to 'arraybuffer' to handle binary data
@@ -101,7 +110,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={
-          <main style={{ paddingTop: '80px'}}>
+          <main style={{ paddingTop: '80px' }}>
             <h1 className = "textsss">aura analyzer</h1>
             <div className="card">
               <form id="uploadForm" className="up">
@@ -112,6 +121,7 @@ function App() {
                 <button type="submit" className="auralyze">auralyze</button>
               </form>
               {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
+              {correctedImgSrc && <img id="corrected" alt="Corrected Preview" src={correctedImgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
               {redboxImgSrc && <img id="redbox" alt="Redbox Preview" src={redboxImgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
               {croppedImgSrc && <img id="cropped" alt="Cropped Preview" src={croppedImgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
               {paletteImgSrc && <img id="palette" alt="Palette" src={paletteImgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
