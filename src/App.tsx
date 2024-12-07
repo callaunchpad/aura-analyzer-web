@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from "react";
 import NavBar from './components/NavBar';
 import About from './pages/About';
-import { DefaultApi, Configuration } from './client';
+import { DefaultApi, Configuration, AuraRequest, AuraRequestDepartmentEnum, AuraRequestColorSeasonEnum } from './client';
 
 const config = new Configuration({
   basePath: 'http://localhost:8000', // Set the correct API base URL
@@ -47,19 +47,45 @@ function App() {
       reader.readAsDataURL(file); // Read the file as a data URL
 
       setImageUploaded(true); // Set to true to trigger useEffect
-      await apiClient.auraAnalyzeAuraAnalyzePost(file);
-      const response = await apiClient.getRedboxAuraAnalyzeRedboxGet({
+
+      // Aura analyze image: call POST endpoint
+      const auraResponse = await apiClient.auraAnalyzeAuraAnalyzePost(file);
+      const season: AuraRequestColorSeasonEnum = auraResponse.data;
+
+      // Get redbox image
+      const redboxImage = await apiClient.getRedboxAuraAnalyzeRedboxGet({
         responseType: 'arraybuffer',  // Set the responseType to 'arraybuffer' to handle binary data
       });
-      console.log("MOOOOOOOO");
-      console.log('Type of response.data:', typeof response.data);
-      console.log(response.data);
-      const blob = new Blob([response.data], { type: 'image/jpeg' });
-      const imageUrl = URL.createObjectURL(blob);  
-      setImgSrc(imageUrl);
-      // console.log(response.data);
-      // save file into folder
-      // now put this file into ../../combined-demo/input-imgs
+      const redboxImageBlob = new Blob([redboxImage.data], { type: 'image/jpeg' });
+      const redboxImageUrl = URL.createObjectURL(redboxImageBlob);  
+      setImgSrc(redboxImageUrl);
+
+      // Get cropped image
+      const croppedImage = await apiClient.getCroppedAuraAnalyzeCroppedGet({
+        responseType: 'arraybuffer',  // Set the responseType to 'arraybuffer' to handle binary data
+      });
+      const croppedImageBlob = new Blob([croppedImage.data], { type: 'image/jpeg' });
+      const croppedImageUrl = URL.createObjectURL(croppedImageBlob);  
+      
+      // To display, can do something similar to line 61 —> srcImgSrc(croppedImageUrl)
+
+      // Get palette
+      const palette = await apiClient.getPaletteAuraAnalyzePaletteGet({
+        responseType: 'arraybuffer',  // Set the responseType to 'arraybuffer' to handle binary data
+      });
+      const paletteBlob = new Blob([palette.data], { type: 'image/jpeg' });
+      const paletteImageUrl = URL.createObjectURL(paletteBlob);  
+
+      // Get palette
+      const auraRequest: AuraRequest = {
+        Department: AuraRequestDepartmentEnum.Menswear,
+        ColorSeason: season,
+        n: 1, // Optional
+      };
+      const generateOutfitResponse = await apiClient.generateOutfitGenerateOutfitPost(auraRequest);
+      console.log(generateOutfitResponse)
+
+
     }
   };
 

@@ -34,48 +34,27 @@ export interface AuraRequest {
      * @type {string}
      * @memberof AuraRequest
      */
-    'outfit_style': AuraRequestOutfitStyleEnum;
+    'Department': AuraRequestDepartmentEnum;
     /**
      * 
      * @type {string}
      * @memberof AuraRequest
      */
-    'gender_expression': AuraRequestGenderExpressionEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof AuraRequest
-     */
-    'colorSeason': AuraRequestColorSeasonEnum;
+    'ColorSeason': AuraRequestColorSeasonEnum;
     /**
      * 
      * @type {number}
      * @memberof AuraRequest
      */
-    'num_outfits'?: number;
+    'n'?: number;
 }
 
-export const AuraRequestOutfitStyleEnum = {
-    Casual: 'Casual',
-    Ethnic: 'Ethnic',
-    Formal: 'Formal',
-    Home: 'Home',
-    Party: 'Party',
-    SmartCasual: 'Smart Casual',
-    Sports: 'Sports',
-    Travel: 'Travel'
+export const AuraRequestDepartmentEnum = {
+    Menswear: 'menswear',
+    Womenswear: 'womenswear'
 } as const;
 
-export type AuraRequestOutfitStyleEnum = typeof AuraRequestOutfitStyleEnum[keyof typeof AuraRequestOutfitStyleEnum];
-export const AuraRequestGenderExpressionEnum = {
-    Boys: 'Boys',
-    Girls: 'Girls',
-    Men: 'Men',
-    Unisex: 'Unisex',
-    Women: 'Women'
-} as const;
-
-export type AuraRequestGenderExpressionEnum = typeof AuraRequestGenderExpressionEnum[keyof typeof AuraRequestGenderExpressionEnum];
+export type AuraRequestDepartmentEnum = typeof AuraRequestDepartmentEnum[keyof typeof AuraRequestDepartmentEnum];
 export const AuraRequestColorSeasonEnum = {
     Autumn: 'autumn',
     Winter: 'winter',
@@ -201,7 +180,7 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         generateOutfitGenerateOutfitPost: async (auraRequest: AuraRequest, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'auraRequest' is not null or undefined
             assertParamExists('generateOutfitGenerateOutfitPost', 'auraRequest', auraRequest)
-            const localVarPath = `/generate-outfit`;
+            const localVarPath = `/generate_outfit`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -353,6 +332,36 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Health Check
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        healthCheckHealthGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/health`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Read Root
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -468,6 +477,18 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Health Check
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async healthCheckHealthGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.healthCheckHealthGet(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.healthCheckHealthGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Read Root
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -544,6 +565,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
          */
         getRedboxAuraAnalyzeRedboxGet(options?: RawAxiosRequestConfig): AxiosPromise<any> {
             return localVarFp.getRedboxAuraAnalyzeRedboxGet(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
+         * @summary Health Check
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        healthCheckHealthGet(options?: RawAxiosRequestConfig): AxiosPromise<any> {
+            return localVarFp.healthCheckHealthGet(options).then((request) => request(axios, basePath));
         },
         /**
          * 
@@ -631,6 +661,17 @@ export class DefaultApi extends BaseAPI {
      */
     public getRedboxAuraAnalyzeRedboxGet(options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getRedboxAuraAnalyzeRedboxGet(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Health Check
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public healthCheckHealthGet(options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).healthCheckHealthGet(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
