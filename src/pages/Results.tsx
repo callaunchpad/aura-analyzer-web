@@ -22,7 +22,7 @@ const Results: React.FC<ResultsProps> = ({ imgSrc, cor, rd, crop, pal, szn, ur }
             <img src={rd} alt="Redbox Preview" style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />
             <img src={crop} alt="Cropped Preview" style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />
             <img src={pal} alt="Palette" style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />
-            <h1> Your season is {szn}! </h1>
+            <h1> your season is {szn}! </h1>
             <div className='notwhite'>
                 {ur.map((item: string | undefined, i: Key | null | undefined) => (
                 <div key={i}>

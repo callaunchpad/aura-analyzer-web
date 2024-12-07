@@ -20,9 +20,10 @@ function App() {
   const [croppedImgSrc, setCroppedImgSrc] = useState('');
   const [paletteImgSrc, setPaletteImgSrc] = useState('');
   const [seasonSrc, setSeasonSrc] = useState('');
+  const [readyToGo, setReadyToGo] = useState(false);
   // const [colors, setColors] = useState([]);
   // const [cszn, setCszn] = useState([]);
-  const [dept, setDept] = useState([]);
+  // const [dept, setDept] = useState([]);
   const [url, setUrl] = useState([]);
   // const [master, setMaster] = useState([]);
   // const [product, setProduct] = useState([]);
@@ -38,6 +39,7 @@ function App() {
       reader.onload = (event) => {
         if (event.target && typeof event.target.result === 'string') {
           setImgSrc(event.target.result);
+          console.log("Setting image and handling change...")
         }
       };
       reader.readAsDataURL(file);
@@ -85,8 +87,8 @@ function App() {
       // setColors(extractColor);
       // const extractColorSeason = generateOutfitResponse.data.map((row: { ColorSeason: any; }[]) => row[0]?.ColorSeason || null);
       // setCszn(extractColorSeason);
-      const extractDepartment = generateOutfitResponse.data.map((row: { Department: any; }[]) => row[0]?.Department || null);
-      setDept(extractDepartment);
+      // const extractDepartment = generateOutfitResponse.data.map((row: { Department: any; }[]) => row[0]?.Department || null);
+      // setDept(extractDepartment);
       const extractItemUrl = generateOutfitResponse.data.map((row: { ItemUrl: any; }[]) => row[0]?.ItemUrl || null);
       setUrl(extractItemUrl);
       // const extractMasterCategory = generateOutfitResponse.data.map((row: { MasterCategory: any; }[]) => row[0]?.MasterCategory || null);
@@ -110,10 +112,13 @@ function App() {
         SubCategory*/
       console.log(generateOutfitResponse.data);
       setSeasonSrc(auraRequest.ColorSeason);
+      generateOutfitResponse.data ? setReadyToGo(true) : setReadyToGo(false);
+      console.log("BOTTOM OF HANDLE CHANGE. Ready to go: ", readyToGo);
     }
   };
 
   const handleDepartmentToggle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log("Handling department toggle...");
     const isChecked = e.target.checked;
     if (isChecked) {
       console.log('Womenswear');
@@ -152,51 +157,36 @@ function App() {
                   choose image to analyze
                 </label>
                 <input type="file" id="fileInput" accept="image/*" onChange={handleChange} />
-                <button type="submit" className="auralyze">Analyze</button>
               </form>
-              {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
-              {correctedImgSrc && <img id="corrected" alt="Corrected Preview" src={correctedImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}}/>}
-              {redboxImgSrc && <img id="redbox" alt="Redbox Preview" src={redboxImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
-              {croppedImgSrc && <img id="cropped" alt="Cropped Preview" src={croppedImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
-              {paletteImgSrc && <img id="palette" alt="Palette" src={paletteImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
-                <div className='notwhite'>
-                  {seasonSrc ? (
-                    <p> {seasonSrc} </p>
-                  ) : (
-                    <p>waiting...</p>
-                  )}
-                </div>
-                <div className ='notwhite'>
-                {url.map((item, i) => (
-                <div key={i}>
-                  <img src={item} alt={`Image ${i}`} style={{ maxWidth: '500px', maxHeight: '700px', padding: '3.2em' }} />
-                </div>
-                ))   
-                }
-                {/* {url.map((item, i) => (
-              (female && item==='womenswear' || !female && item==='meanswear' ? (
-                <div key={i}>
-                  <img src={item} alt={`Image ${i}`} style={{ maxWidth: '500px', maxHeight: '700px', padding: '3.2em' }} />
-                </div>
-                ) : (null))
-                ))   
-                } */}
-
-                {/* {colors.map((item, i) => (
-                  <div key={i}>
-                  <p> Color: {colors[i]} </p>
-                  <p> Color Season: {cszn[i]} </p>
-                  <p> Department: {dept[i]} </p>
-                  <p> ItemUrl: {url[i]} </p>
-                  <p> Master Category: {master[i]} </p>
-                  <p> Product Display Name: {product[i]} </p>
-                  <p> Size: {size[i]} </p>
-                  <p> Sub Category: {sub[i]} </p>
-                  <img src={url[i]} alt={`Image ${i}`} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />
-                  <hr></hr>
-                  </div>
-                ))} */}
-                </div>
+              <div>
+                   {readyToGo ? (
+                      <div>
+                        <button type="submit" className="auralyze">Analyze</button>
+                          {/* {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
+                        {correctedImgSrc && <img id="corrected" alt="Corrected Preview" src={correctedImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}}/>}
+                        {redboxImgSrc && <img id="redbox" alt="Redbox Preview" src={redboxImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
+                        {croppedImgSrc && <img id="cropped" alt="Cropped Preview" src={croppedImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
+                        {paletteImgSrc && <img id="palette" alt="Palette" src={paletteImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
+                          <div className='notwhite'>
+                            {seasonSrc ? (
+                              <p> {seasonSrc} </p>
+                            ) : (
+                              <p>waiting...</p>
+                            )}
+                          </div>
+                          <div className ='notwhite'>
+                          {url.map((item, i) => (
+                          <div key={i}>
+                            <img src={item} alt={`Image ${i}`} style={{ maxWidth: '500px', maxHeight: '700px', padding: '3.2em' }} />
+                          </div>
+                          ))   
+                          }
+                          </div> */}
+                      </div>
+                    ) : (<div className='notwhite'> <p>waiting...</p> </div>)
+                    // this is where you put the loading
+                    }
+              </div>
             </div>
           </main>
         } />

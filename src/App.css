@@ -115,7 +115,7 @@
 /* App.css */
 .toggle-container {
   display: flex;
-  justify-content: flex-start; /* Align to the left */
+  justify-content: center; /* Align to the center */
   margin-bottom: 20px;
   margin-top: 20px; /* Adjust top margin if needed */
   position: relative; /* Ensure proper positioning */
