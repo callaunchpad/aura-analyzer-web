@@ -221,7 +221,7 @@ function App() {
                         </Link>
                         
                         <button type="submit" onClick={resetButton} className="image-button">
-                        <img id="reset" alt="reset" src='whiteretry.png' className="button-image" />
+                        <img id="reset" alt="reset" src='/whiteretry.png' className="button-image" />
                           </button>
                           {/* {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
                         {correctedImgSrc && <img id="corrected" alt="Corrected Preview" src={correctedImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}}/>}
