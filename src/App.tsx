@@ -95,6 +95,7 @@ function App() {
             <div className="card">
               <form id="uploadForm" className="up">
                 <label htmlFor="fileInput" className="file-input-label">
+                  {/* style={{height:"150px", width: "200px", padding: '3.2em'} */}
                   choose image to auralyze
                 </label>
                 <input type="file" id="fileInput" accept="image/*" onChange={handleChange}/>

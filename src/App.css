@@ -80,8 +80,8 @@
 .file-input-label {
   background-color: #cf7baf;
   color: white;
-  padding: 200px 200px;
-  border-radius: 4px;
+  padding: 50px 75px;
+  border-radius: 15px;
   cursor: pointer;
   font-family: 'Futura', cursive;
   font-size: 3rem;
