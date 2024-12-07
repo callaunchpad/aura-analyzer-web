@@ -3,11 +3,11 @@
   max-width: 800px;
   margin: 0 auto;
   padding-top: 60px;
+  font-size: 70px;
 }
 
 .title {
   color: #cf7baf;
-  padding: 2rem;
   font-size: 4rem;
   margin-bottom: 1rem;
   text-align: center;
@@ -53,6 +53,7 @@
   justify-content: center;
   gap: 30px;
   align-items: flex-start;
+  max-width: 320px;
 }
 
 .faceName {

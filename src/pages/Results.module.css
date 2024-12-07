@@ -1,13 +1,18 @@
-.aboutContainer {
-    padding: 2rem;
+.resultContainer {
     max-width: 800px;
+    padding: 2rem;
     margin: 0 auto;
-    padding-top: 60px;
+    font-size: 70px;
+    /* padding-top: 60px; */
+  }
+
+  .resultContainer img {
+    max-width: 320px;
+    align-items: center;
   }
   
   .title {
     color: #cf7baf;
-    padding: 2rem;
     font-size: 4rem;
     margin-bottom: 1rem;
     text-align: center;
@@ -17,6 +22,7 @@
     line-height: 1.2;
     -webkit-text-stroke: 2px white;
     text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+    padding-top: 12px;
   }
   
   .content {
@@ -25,16 +31,46 @@
     color: #cf7baf;
     font-family: "Futura", cursive;
     margin-bottom: 70px;  
-  }
-  
-  .content p {
-    margin-bottom: 1rem;
-    font-size: 2.5rem;
+    text-align: center;
   }
 
-  .imm {
-    text-align: center;
-    padding: 3.2em;
-    max-width: 50px;
-    max-height: 30px;
+  .content p {
+    font-size: 2rem;
+  }
+
+  .sidebyside {
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    gap: 10px;
+    /*text-align: center;*/
+  }
+  .imim img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    /* padding: 3.2em; */
+    }
+
+
+  .smol {
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+    transform: scale(0.1);
+  }
+
+  .facesGrid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .facesRow {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    align-items: flex-start;
   }
