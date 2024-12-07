@@ -8,9 +8,13 @@ import Results from './pages/Results';
 import { DefaultApi, Configuration, AuraRequest, AuraRequestDepartmentEnum, AuraRequestColorSeasonEnum } from './client';
 
 const config = new Configuration({
-  basePath: 'http://localhost:8000',
+  basePath: 'https://web-aura-analyzer-g7cpc5cgb4gchka9.canadacentral-01.azurewebsites.net/',
 });
-
+/* 
+https://web-aura-analyzer-g7cpc5cgb4gchka9.canadacentral-01.azurewebsites.net/
+web-aura-analyzer-g7cpc5cgb4gchka9.canadacentral-01.azurewebsites.net
+'http://localhost:8000',
+*/
 const apiClient = new DefaultApi(config);
 
 function App() {
