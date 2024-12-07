@@ -287,3 +287,29 @@ input:checked ~ .toggle-label:hover {
 .image-button:hover {
   background-color: #cf7bafd4;   /* Darker background on hover */
 }
+
+.launchLoader {
+    border-top: 16px solid #cf7baf;
+    border-right: 16px solid #FFFFFF;
+    border-bottom: 16px solid #EE5E4A;
+    border-left: 16px solid #F2EFED;
+    width: 18px;
+    height: 18px;
+    animation: spin 2s linear infinite;
+}
+
+.loader {
+  border: 16px solid #FFFFFF;
+  border-top: 16px solid #cf7baf;
+  border-right: 16px solid #cf7baf;
+  border-left: 16px solid #cf7baf;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

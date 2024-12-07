@@ -10,9 +10,10 @@ interface ResultsProps {
     szn: string;
     ur: string[];
     rtg: boolean;
+    it: boolean;
 }
 
-const Results: React.FC<ResultsProps> = ({ imgSrc, cor, rd, crop, pal, szn, ur, rtg }) => {
+const Results: React.FC<ResultsProps> = ({ imgSrc, cor, rd, crop, pal, szn, ur, rtg, it }) => {
   return (
     
     <div className={styles.resultContainer}>
@@ -20,8 +21,13 @@ const Results: React.FC<ResultsProps> = ({ imgSrc, cor, rd, crop, pal, szn, ur, 
       <div className={styles.content}>
           {rtg ? (
             <div>
+              <div style = {{padding: '2em'}}/>
             <p style = {{fontWeight:'bold', paddingBottom:'0.25em'}}> your season is {szn}! </p>
             <div className = 'sidebyside imim'> 
+            <p> these are your colors: </p>
+            <img src={pal} alt="Palette Preview" className = 'smol'/>
+            <div style = {{padding: '2em'}}/>
+            <p style = {{fontWeight:'bold', paddingBottom:'0.25em'}}> how we get that: </p>
             <p> this is you: </p>
               <img src={imgSrc} alt="Uploaded Preview"/>
               <p> and you after color correction: </p>
@@ -30,14 +36,13 @@ const Results: React.FC<ResultsProps> = ({ imgSrc, cor, rd, crop, pal, szn, ur, 
               <img src={rd} alt="Redbox Preview"/>
               <p> then just your cropped face: </p>
               <img src={crop} alt="Cropped Preview"/>
-              <p> these are your colors: </p>
-              <img src={pal} alt="Palette Preview" className = 'smol'/>
               {/* style={{padding: '3.2em', scale:'0.4', display: 'inline-block'}} */}
             {/* <img src={imgSrc} alt="Uploaded Preview" style={{maxWidth: '800px', height: 'auto', padding: '3.2em', display: 'inline-block', margin: '0 auto'}}/>
             <img src={cor} alt="Corrected Preview" style={{maxWidth: '800px', height: 'auto', padding: '3.2em', display: 'inline-block', margin: '0 auto'}}/>
             <img src={rd} alt="Redbox Preview" style={{maxWidth: '500px', height: 'auto', padding: '3.2em', display: 'grid', margin: '0 auto'}}  />
             <img src={crop} alt="Cropped Preview" style={{maxWidth: '800px', height: 'auto', padding: '3.2em', display: 'inline-block', margin: '0 auto'}}  />
             <img src={pal} alt="Palette" style={{maxWidth: '800px', height: 'auto', padding: '3.2em', display: 'inline-block', margin: '0 auto'}}  /> */}
+            <div style = {{padding: '2em'}}/>
             <p style = {{fontWeight:'bold'}}> here's an outfit for you to try! </p>
                 {ur.map((item: string | undefined, i: Key | null | undefined) => (
                 <div key={i}>
@@ -46,8 +51,7 @@ const Results: React.FC<ResultsProps> = ({ imgSrc, cor, rd, crop, pal, szn, ur, 
                 ))}
             </div>
              </div>
-          ) : (
-            <p>waiting...</p>
+          ) : ( <div> {it ? (<div className = 'cen' style={{padding: '3em'}}> <div className='launchLoader'> </div> </div>) : (<p>awaiting input...</p>)} </div>
           )}
         </div>
     </div>

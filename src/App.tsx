@@ -204,6 +204,10 @@ function App() {
               </form>
               <div>
               </div>
+
+              {/* <div className='launchLoader'> </div> 
+              <div className='loader'></div> */}
+
               <div>
                 {imgTaken ? (<div>
                   {readyToGo ? (
@@ -240,7 +244,9 @@ function App() {
                           }
                           </div> */}
                       </div>
-                    ) : (<div className='notwhite iliketext'> <p>waiting...</p> </div>)
+                      ) : (<div className = 'cen' style={{padding: '3em'}}> <div className='loader'> </div> </div>
+                      )
+                    // ) : (<div className='notwhite iliketext'> <p>waiting...</p> </div>)
                     // this is where you put the loading
                     }
 
@@ -258,7 +264,8 @@ function App() {
         pal={paletteImgSrc} 
         szn={seasonSrc} 
         ur={resultImgs} // instead of url
-        rtg={readyToGo}/>}/>
+        rtg={readyToGo}
+        it={imgTaken}/>} />
       </Routes>
     </Router>
   );
