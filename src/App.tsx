@@ -100,7 +100,7 @@ function App() {
       };
       const generateOutfitResponse = await apiClient.generateOutfitGenerateOutfitPost(auraRequest);
       console.log(generateOutfitResponse.data)
-      // setSeasonSrc(generateOutfitResponse.data);
+      setSeasonSrc(auraRequest.ColorSeason);
 
     }
   };
@@ -125,7 +125,14 @@ function App() {
               {redboxImgSrc && <img id="redbox" alt="Redbox Preview" src={redboxImgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
               {croppedImgSrc && <img id="cropped" alt="Cropped Preview" src={croppedImgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
               {paletteImgSrc && <img id="palette" alt="Palette" src={paletteImgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
-              {/* {seasonSrc && <label id="season"> {seasonSrc}</label>} */}
+                <div>
+                  {seasonSrc ? (
+                    <p> {seasonSrc} </p>
+                  ) : (
+                    <p>waiting...</p>
+                  )}
+                </div>
+
 
               {/* <div className="card">
                 {newImgSrc ? (
