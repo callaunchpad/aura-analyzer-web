@@ -7,12 +7,12 @@ import About from './pages/About';
 import Results from './pages/Results';
 import { DefaultApi, Configuration, AuraRequest, AuraRequestDepartmentEnum, AuraRequestColorSeasonEnum } from './client';
 
-// const config = new Configuration({
-//   basePath: 'https://web-aura-analyzer-g7cpc5cgb4gchka9.canadacentral-01.azurewebsites.net/',
-// });
 const config = new Configuration({
-  basePath: 'http://localhost:8000',
+  basePath: 'https://web-aura-analyzer-g7cpc5cgb4gchka9.canadacentral-01.azurewebsites.net/',
 });
+// const config = new Configuration({
+//   basePath: 'http://localhost:8000',
+// });
 /* 
 https://web-aura-analyzer-g7cpc5cgb4gchka9.canadacentral-01.azurewebsites.net/
 web-aura-analyzer-g7cpc5cgb4gchka9.canadacentral-01.azurewebsites.net
