@@ -1,0 +1,35 @@
+.aboutContainer {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 60px;
+  }
+  
+  .title {
+    color: #cf7baf;
+    padding: 2rem;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-family: 'Modak', cursive;
+    letter-spacing: 1px;
+    text-transform: lowercase;
+    line-height: 1.2;
+    -webkit-text-stroke: 2px white;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cf7baf;
+    font-family: "Futura", cursive;
+    margin-bottom: 50px;  
+  }
+
+  .imm {
+    text-align: center;
+    padding: 3.2em;
+    max-width: 50px;
+    max-height: 30px;
+  }
