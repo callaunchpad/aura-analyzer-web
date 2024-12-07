@@ -14,6 +14,11 @@ const apiClient = new DefaultApi(config);
 function App() {
   const [imgSrc, setImgSrc] = useState('');
   const [newImgSrc, setNewImgSrc] = useState('');
+  const [redboxImgSrc, setRedboxImgSrc] = useState('');
+  const [croppedImgSrc, setCroppedImgSrc] = useState('');
+  const [paletteImgSrc, setPaletteImgSrc] = useState('');
+  const [seasonSrc, setSeasonSrc] = useState('');
+
   const [imageUploaded, setImageUploaded] = useState(false);
 
   useEffect(() => {
@@ -41,7 +46,7 @@ function App() {
       reader.onload = (event) => {
         if (event.target && typeof event.target.result === 'string') {
           console.log("DOG");
-          // setImgSrc(event.target.result); // Set the image source to display
+          setImgSrc(event.target.result); // Set the image source to display
         }
       };
       reader.readAsDataURL(file); // Read the file as a data URL
@@ -58,7 +63,7 @@ function App() {
       });
       const redboxImageBlob = new Blob([redboxImage.data], { type: 'image/jpeg' });
       const redboxImageUrl = URL.createObjectURL(redboxImageBlob);  
-      setImgSrc(redboxImageUrl);
+      setRedboxImgSrc(redboxImageUrl);
 
       // Get cropped image
       const croppedImage = await apiClient.getCroppedAuraAnalyzeCroppedGet({
@@ -66,7 +71,8 @@ function App() {
       });
       const croppedImageBlob = new Blob([croppedImage.data], { type: 'image/jpeg' });
       const croppedImageUrl = URL.createObjectURL(croppedImageBlob);  
-      
+      setCroppedImgSrc(croppedImageUrl);
+
       // To display, can do something similar to line 61 —> srcImgSrc(croppedImageUrl)
 
       // Get palette
@@ -75,6 +81,7 @@ function App() {
       });
       const paletteBlob = new Blob([palette.data], { type: 'image/jpeg' });
       const paletteImageUrl = URL.createObjectURL(paletteBlob);  
+      setPaletteImgSrc(paletteImageUrl);
 
       // Get palette
       const auraRequest: AuraRequest = {
@@ -84,7 +91,7 @@ function App() {
       };
       const generateOutfitResponse = await apiClient.generateOutfitGenerateOutfitPost(auraRequest);
       console.log(generateOutfitResponse.data)
-
+      // setSeasonSrc(generateOutfitResponse.data);
 
     }
   };
@@ -105,6 +112,11 @@ function App() {
                 <button type="submit" className="auralyze">auralyze</button>
               </form>
               {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
+              {redboxImgSrc && <img id="redbox" alt="Redbox Preview" src={redboxImgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
+              {croppedImgSrc && <img id="cropped" alt="Cropped Preview" src={croppedImgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
+              {paletteImgSrc && <img id="palette" alt="Palette" src={paletteImgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
+              {/* {seasonSrc && <label id="season"> {seasonSrc}</label>} */}
+
               {/* <div className="card">
                 {newImgSrc ? (
                   <img src={newImgSrc} alt="Facial Detection Result" style={{maxWidth: '1000px'}} />
