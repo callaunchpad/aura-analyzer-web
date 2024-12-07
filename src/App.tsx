@@ -125,7 +125,7 @@ function App() {
               {redboxImgSrc && <img id="redbox" alt="Redbox Preview" src={redboxImgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
               {croppedImgSrc && <img id="cropped" alt="Cropped Preview" src={croppedImgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
               {paletteImgSrc && <img id="palette" alt="Palette" src={paletteImgSrc} style={{maxWidth: '1000px', padding: '3.2em'}} />}
-                <div>
+                <div className='notwhite'>
                   {seasonSrc ? (
                     <p> {seasonSrc} </p>
                   ) : (
@@ -133,7 +133,6 @@ function App() {
                   )}
                 </div>
 
-                
               {/* <div className="card">
                 {newImgSrc ? (
                   <img src={newImgSrc} alt="Facial Detection Result" style={{maxWidth: '1000px'}} />

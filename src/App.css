@@ -1,5 +1,4 @@
 #root {
-  background-color: #fff1f9;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -35,7 +34,6 @@
 }
 
 .card {
-  background-color: #fff1f9;
   padding: 2em;
 }
 
@@ -109,4 +107,8 @@
 
 .auralyze:hover {
   background-color: #cf7bafd4;
+}
+
+.notwhite {
+  color:black;
 }
