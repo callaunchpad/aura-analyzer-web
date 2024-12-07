@@ -86,7 +86,7 @@
   font-family: 'Futura', cursive;
   font-weight: bold;
   font-size: 2.6rem;
-  border: none;
+  border: 1px solid #FFFFFF; 
   transition: background-color 0.3s ease;
 }
 
@@ -99,11 +99,27 @@
   font-size: 3rem;
   font-family: 'Futura', cursive;
   background-color: #cf7baf;
-  border: none;
+  border: 1px solid #FFFFFF; 
   padding: 10px 20px;
   border-radius: 15px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+}
+
+.reset {
+  color: white;
+  font-size: 1rem;
+  background-color: #cf7baf;
+  border: none;
+  padding: 5px;
+  border-radius: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  transform: scale(0.1);
+}
+
+.butt {
+  display:none;
 }
 
 .auralyze:hover {
@@ -144,6 +160,10 @@
   height: 0;
 }
 
+.toggle-label:hover {
+  color: #7ab1edd4;
+}
+
 .toggle-label {
   font-size: 16px;
   font-weight: bold;
@@ -155,6 +175,10 @@
   top: 5px; /* Move the label text down by a few pixels */
   text-align: center; /* Center the text */
   padding-top: 60px;
+}
+
+.toggle-slider:hover {
+  background-color: #7ab1edd4;
 }
 
 .toggle-slider {
@@ -184,6 +208,7 @@
 /* When the input is checked, change the slider color */
 input:checked + .toggle-slider {
   background-color: #cf7baf; /* Pink for checked state */
+  transition: background-color 0.4s;
 }
 
 /* When the input is checked, move the circle (handle) to the right */
@@ -194,6 +219,14 @@ input:checked + .toggle-slider:before {
 /* Change the text color based on checked state */
 input:checked ~ .toggle-label {
   color: #cf7baf; /* Change the label color to pink when checked */
+}
+
+input:checked + .toggle-slider:hover {
+  background-color: #cf7bafd4; /* Pink for checked state */
+}
+
+input:checked ~ .toggle-label:hover {
+  color: #cf7bafd4; /* Change the label color to pink when checked */
 }
 
 .col {
@@ -230,4 +263,27 @@ input:checked ~ .toggle-label {
   font-size: 2.6rem;
   border: none;
   transition: background-color 0.3s ease;
+}
+
+.image-button {
+  display: flex;               /* Align text and image side by side */
+  align-items: center;         /* Center align the content vertically */
+  padding: 2px 2px;          /* Add padding around the button */
+  font-size: 24px;             /* Font size for the button text */
+  font-weight: bold;           /* Make the text bold */
+  border: 1px solid #FFFFFF;      /* Add a border */
+  border-radius: 10px;          /* Rounded corners */
+  background-color: #cf7baf;   /* Button background color */
+  color: white;                /* Text color */
+  cursor: pointer;             /* Pointer cursor on hover */
+  gap: 5px;                   /* Space between image and text */
+}
+
+.button-image {
+  width: 64px;                 /* Width of the image */
+  height: 64px;                /* Height of the image */
+}
+
+.image-button:hover {
+  background-color: #cf7bafd4;   /* Darker background on hover */
 }

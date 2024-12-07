@@ -7,8 +7,11 @@ import About from './pages/About';
 import Results from './pages/Results';
 import { DefaultApi, Configuration, AuraRequest, AuraRequestDepartmentEnum, AuraRequestColorSeasonEnum } from './client';
 
+// const config = new Configuration({
+//   basePath: 'https://web-aura-analyzer-g7cpc5cgb4gchka9.canadacentral-01.azurewebsites.net/',
+// });
 const config = new Configuration({
-  basePath: 'https://web-aura-analyzer-g7cpc5cgb4gchka9.canadacentral-01.azurewebsites.net/',
+  basePath: 'http://localhost:8000',
 });
 /* 
 https://web-aura-analyzer-g7cpc5cgb4gchka9.canadacentral-01.azurewebsites.net/
@@ -213,7 +216,9 @@ function App() {
                             </button>
                         </Link>
                         
-                        <button type="submit" className="auralyze" onClick={resetButton}>reset</button>
+                        <button type="submit" onClick={resetButton} className="image-button">
+                        <img id="reset" alt="reset" src='whiteretry.png' className="button-image" />
+                          </button>
                           {/* {imgSrc && <img id="uploadedImage" alt="Uploaded Preview" src={imgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
                         {correctedImgSrc && <img id="corrected" alt="Corrected Preview" src={correctedImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}}/>}
                         {redboxImgSrc && <img id="redbox" alt="Redbox Preview" src={redboxImgSrc} style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />}
