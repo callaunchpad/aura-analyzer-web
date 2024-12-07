@@ -1,5 +1,5 @@
 #root {
-  background-color: black;
+  background-color: #fff1f9;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -35,7 +35,7 @@
 }
 
 .card {
-  background-color: black;
+  background-color: #fff1f9;
   padding: 2em;
 }
 
@@ -50,7 +50,7 @@
 .textsss {
   margin-top: 5px;
   /* color: white; */
-
+  
   color: #cf7baf;
   font-size: 7rem;
   margin-bottom: 2rem;
