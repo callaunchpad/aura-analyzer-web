@@ -238,6 +238,36 @@ export const DefaultApiAxiosParamCreator = function (configuration?: Configurati
         },
         /**
          * 
+         * @summary Get Corrected
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCorrectedAuraAnalyzeCorrectedGet: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/aura_analyze/white-balanced`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 
          * @summary Get Item Image
          * @param {number} imageId 
          * @param {*} [options] Override http request option.
@@ -440,6 +470,18 @@ export const DefaultApiFp = function(configuration?: Configuration) {
         },
         /**
          * 
+         * @summary Get Corrected
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async getCorrectedAuraAnalyzeCorrectedGet(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<any>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.getCorrectedAuraAnalyzeCorrectedGet(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['DefaultApi.getCorrectedAuraAnalyzeCorrectedGet']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 
          * @summary Get Item Image
          * @param {number} imageId 
          * @param {*} [options] Override http request option.
@@ -540,6 +582,15 @@ export const DefaultApiFactory = function (configuration?: Configuration, basePa
         },
         /**
          * 
+         * @summary Get Corrected
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        getCorrectedAuraAnalyzeCorrectedGet(options?: RawAxiosRequestConfig): AxiosPromise<any> {
+            return localVarFp.getCorrectedAuraAnalyzeCorrectedGet(options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 
          * @summary Get Item Image
          * @param {number} imageId 
          * @param {*} [options] Override http request option.
@@ -627,6 +678,17 @@ export class DefaultApi extends BaseAPI {
      */
     public getCroppedAuraAnalyzeCroppedGet(options?: RawAxiosRequestConfig) {
         return DefaultApiFp(this.configuration).getCroppedAuraAnalyzeCroppedGet(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
+     * 
+     * @summary Get Corrected
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof DefaultApi
+     */
+    public getCorrectedAuraAnalyzeCorrectedGet(options?: RawAxiosRequestConfig) {
+        return DefaultApiFp(this.configuration).getCorrectedAuraAnalyzeCorrectedGet(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
