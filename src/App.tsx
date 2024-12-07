@@ -133,7 +133,7 @@ function App() {
                   )}
                 </div>
 
-
+                
               {/* <div className="card">
                 {newImgSrc ? (
                   <img src={newImgSrc} alt="Facial Detection Result" style={{maxWidth: '1000px'}} />
