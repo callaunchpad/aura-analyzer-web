@@ -9,14 +9,18 @@ interface ResultsProps {
     pal: string;
     szn: string;
     ur: string[];
+    rtg: boolean;
 }
 
-const Results: React.FC<ResultsProps> = ({ imgSrc, cor, rd, crop, pal, szn, ur }) => {
+const Results: React.FC<ResultsProps> = ({ imgSrc, cor, rd, crop, pal, szn, ur, rtg }) => {
   return (
     <div className={styles.aboutContainer}>
       <h1 className={styles.title}>aura analyzer</h1>
       <div className={styles.content}>
         <div className = "imm">
+          {rtg ? (
+            <div>
+          
             <img src={imgSrc} alt="Uploaded Preview" style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />
             <img src={cor} alt="Corrected Preview" style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}}/>
             <img src={rd} alt="Redbox Preview" style={{maxWidth: '500px', maxHeight: '700px', padding: '3.2em'}} />
@@ -30,6 +34,10 @@ const Results: React.FC<ResultsProps> = ({ imgSrc, cor, rd, crop, pal, szn, ur }
                 </div>
                 ))}
              </div>
+             </div>
+          ) : (
+            <p>waiting...</p>
+          )}
         </div>
       </div>
     </div>

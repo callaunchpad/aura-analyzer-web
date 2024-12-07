@@ -82,7 +82,7 @@ function App() {
       };
 
       const generateOutfitResponse = await apiClient.generateOutfitGenerateOutfitPost(auraRequest);
-      console.log(generateOutfitResponse.data)
+      // generateOutfitResponse.data)
       // const extractColor = generateOutfitResponse.data.map((row: { Color: any; }[]) => row[0]?.Color || null);
       // setColors(extractColor);
       // const extractColorSeason = generateOutfitResponse.data.map((row: { ColorSeason: any; }[]) => row[0]?.ColorSeason || null);
@@ -198,7 +198,8 @@ function App() {
         crop={croppedImgSrc} 
         pal={paletteImgSrc} 
         szn={seasonSrc} 
-        ur={url} />}/>
+        ur={url} 
+        rtg={readyToGo}/>}/>
       </Routes>
     </Router>
   );
